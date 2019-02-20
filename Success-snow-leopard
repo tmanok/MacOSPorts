@@ -1,0 +1,77 @@
+OldReliable:~ Tmanok$ sudo ./mkusb
+Welcome to simple mkusb/dd-autocomplete alternative for Mac!
+Let's start by locating your iso image.
+Would you like to update your locate database: yes or no? (Recommended if you recently downloaded your iso image).
+n
+Ok moving on.
+Would you like to search your user folder for iso images: yes or no? 
+y
+./Desktop/FreeNAS-11.2-RELEASE-U1.iso
+./Documents/ubuntu-18.10-desktop-amd64.iso
+Input the location of your iso below and then press [ENTER]: 
+Documents/ubuntu-18.10-desktop-amd64.iso
+Next let's choose a disk from the list below. When selecting, type the full disk name e.g. disk2 or disk3 etc
+NAME                    SIZE       IDENTIFIER
+                       *250.1 GB   disk0
+                        209.7 MB   disk0s1
+GOOGLE                  249.7 GB   disk0s2
+NAME                    SIZE       IDENTIFIER
+NAME                    SIZE       IDENTIFIER
+                       *8.0 GB     disk2
+                        209.7 MB   disk2s1
+FREENAS                 7.8 GB     disk2s2
+Please type the disk you'd like to dd and then press [ENTER]: 
+disk2
+You've chosen an iso located here: Documents/ubuntu-18.10-desktop-amd64.iso
+The disk you selected is: disk2
+Would you like to proceed yes or no?
+n
+Exiting...
+OldReliable:~ Tmanok$ sudo ./mkusb
+Welcome to simple mkusb/dd-autocomplete alternative for Mac!
+Let's start by locating your iso image.
+Would you like to update your locate database: yes or no? (Recommended if you recently downloaded your iso image).
+n
+Ok moving on.
+Would you like to search your user folder for iso images: yes or no? 
+y
+./Desktop/FreeNAS-11.2-RELEASE-U1.iso
+./Documents/ubuntu-18.10-desktop-amd64.iso
+Input the location of your iso below and then press [ENTER]: 
+Desktop/FreeNAS-11.2-RELEASE-U1.iso
+Next let's choose a disk from the list below. When selecting, type the full disk name e.g. disk2 or disk3 etc
+NAME                    SIZE       IDENTIFIER
+                       *250.1 GB   disk0
+                        209.7 MB   disk0s1
+GOOGLE                  249.7 GB   disk0s2
+NAME                    SIZE       IDENTIFIER
+NAME                    SIZE       IDENTIFIER
+                       *8.0 GB     disk2
+                        209.7 MB   disk2s1
+FREENAS                 7.8 GB     disk2s2
+Please type the disk you'd like to dd and then press [ENTER]: 
+disk2
+You've chosen an iso located here: Desktop/FreeNAS-11.2-RELEASE-U1.iso
+The disk you selected is: disk2
+Would you like to proceed yes or no?
+yes
+Unmount of all volumes on disk2 was successful
+143+1 records in
+144+0 records out
+603979776 bytes transferred in 78.755998 secs (7669000 bytes/sec)
+OldReliable:~ Tmanok$ sw_vers -productVersion
+10.6
+OldReliable:~ Tmanok$ system_profiler SPSoftwareDataType
+Software:
+
+    System Software Overview:
+
+      System Version: Mac OS X 10.6 (10A432)
+      Kernel Version: Darwin 10.0.0
+      Boot Volume: GOOGLE
+      Boot Mode: Normal
+      Computer Name: OldReliable
+      User Name: Triston Line (Tmanok)
+      Secure Virtual Memory: Not Enabled
+      64-bit Kernel and Extensions: No
+      Time since boot: 2 days 2:09
