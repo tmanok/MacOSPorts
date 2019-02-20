@@ -1,0 +1,125 @@
+#!/bin/bash
+#This script will progressively become more advanced as I have time to develop it further.
+#For now it simply acts as my simply dd script. Yes I'm very new to GitHub how'd you guess? Wait what's a pull request- jk.
+
+#Check if sudo/root
+if [ "$(id -u)" -ne 0 ]; then
+	echo "error: script must be run as root"
+	exit 3
+fi
+
+echo "Welcome to simple mkusb/dd-autocomplete alternative for Mac!"
+echo "Let's start by locating your iso image."
+sleep 0.2;
+echo "Would you like to update your locate database: yes or no? (Recommended if you recently downloaded your iso image)."
+read updatedb
+
+#Begin choice section to update locate database.
+if [ $updatedb == y ]; then
+    echo "This should take between 2-5mins...";
+    sudo /usr/libexec/locate.updatedb
+   elif [ $updatedb == Y ]; then
+    echo "This should take between 2-5mins...";
+    sudo /usr/libexec/locate.updatedb
+   elif [ $updatedb == yes ]; then
+    echo "This should take between 2-5mins...";
+    sudo /usr/libexec/locate.updatedb
+   elif [ $updatedb == YES ]; then
+    echo "This should take between 2-5mins...";
+    sudo /usr/libexec/locate.updatedb
+#Begin "No" Section
+   elif [ $updatedb == n ]; then
+    echo "Ok moving on."
+   elif [ $updatedb == N ]; then
+    echo "Ok moving on."
+   elif [ $updatedb == no ]; then
+    echo "Ok moving on."
+   elif [ $updatedb == NO ]; then
+     echo "Ok moving on."
+  else echo "Invalid input: Moving on..."
+fi
+
+echo "Would you like to search your user folder for iso images: yes or no? "
+read locate
+
+#Begin choice section to locate .iso images.
+if [ $locate == y ]; then
+    cd
+    find . 2>/dev/null -name '*.iso' -print;
+    find . 2>/dev/null -name '*.img' -print
+   elif [ $locate == Y ]; then
+    cd
+    find . 2>/dev/null -name '*.iso' -print;
+    find . 2>/dev/null -name '*.img' -print
+   elif [ $locate == yes ]; then
+    cd
+    find . 2>/dev/null -name '*.iso' -print;
+    find . 2>/dev/null -name '*.img' -print
+   elif [ $locate == YES ]; then
+    cd
+    find . 2>/dev/null -name '*.iso' -print;
+    find . 2>/dev/null -name '*.img' -print
+#Begin "No" Section
+   elif [ $locate == n ]; then
+    echo "Ok moving on."
+   elif [ $locate == N ]; then
+    echo "Ok moving on."
+   elif [ $locate == no ]; then
+    echo "Ok moving on."
+   elif [ $locate == NO ]; then
+     echo "Ok moving on."
+  else echo "Invalid input: Moving on..."
+fi
+
+echo "Input the location of your iso below and then press [ENTER]: "
+  read iso
+echo "Next let's choose a disk from the list below. When selecting, type the full disk name e.g. disk2 or disk3 etc"
+#Below command cleans up diskutil output
+  diskutil list | egrep "NAME|MB|GB|TB" | cut -c 34-
+echo "Please type the disk you'd like to dd and then press [ENTER]: "
+  read disk
+echo "You've chosen an iso located here: $iso"
+echo "The disk you selected is: $disk"
+#Verify Unmountable Images with the following command.
+#diskutil list | egrep "MB|GB|TB" | cut -c 34- | grep disk'[0-9]'s'[0-9]' | cut -c 36-
+echo "Would you like to proceed yes or no?"
+read choice
+
+if [ $choice == y ]; then
+    diskutil unmountDisk /dev/$disk
+    echo "Writing to disk... This should take 2-5mins."
+    sudo dd if=$iso of=/dev/$disk bs=4m conv=sync
+    exit 0
+   elif [ $choice == Y ]; then
+    diskutil unmountDisk /dev/$disk
+    echo "Writing to disk... This should take 2-5mins."
+    sudo dd if=$iso of=/dev/$disk bs=4m conv=sync
+    exit 0
+   elif [ $choice == yes ]; then
+    diskutil unmountDisk /dev/$disk
+    echo "Writing to disk... This should take 2-5mins."
+    sudo dd if=$iso of=/dev/$disk bs=4m conv=sync
+    exit 0
+   elif [ $choice == YES ]; then
+    diskutil unmountDisk /dev/$disk
+    echo "Writing to disk... This should take 2-5mins."
+    sudo dd if=$iso of=/dev/$disk bs=4m conv=sync
+    exit 0
+ #Begin "No" Section
+   elif [ $choice == n ]; then
+    echo "Exiting..."
+    exit 1
+   elif [ $choice == N ]; then
+    echo "Exiting..."
+    exit 1
+   elif [ $choice == no ]; then
+    echo "Exiting..."
+    exit 1
+   elif [ $choice == NO ]; then
+     echo "Exiting..."
+    exit 1
+else echo "Invalid input: Exiting..."
+  exit 2
+fi
+
+#Error codes include 0 = clean, 1 = user decline, 2 = user input error, 3 = non-root user
